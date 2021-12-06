@@ -6,10 +6,8 @@ import {
   View,
   Button,
 } from "react-native";
-import * as SQLite from "expo-sqlite";
 import { Audio } from "expo-av";
-
-const db = SQLite.openDatabase("catDatabase.db");
+import db from "./db";
 
 function FavoritesView() {
     const [favoritesList, setFavoritesList] = useState([]); 

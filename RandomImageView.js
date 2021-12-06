@@ -7,9 +7,7 @@ import {
   Button,
   StatusBar as ReactNativeStatusBar,
 } from "react-native";
-import * as SQLite from "expo-sqlite";
-
-const db = SQLite.openDatabase("catDatabase.db");
+import db from "./db";
 
 function RandomImageView() { 
     const [imageUrl, setImageUrl] = useState(null); 
@@ -35,11 +33,13 @@ function RandomImageView() {
     }, []); 
   
     const checkIsImageFavorited = useCallback(() => {
+      console.log("hello")
       db.transaction((tx) => {
         tx.executeSql( 
           "select * from favorites where id = ? limit 1;",
           [imageUrl],
           (_, { rows }) => {
+            console.log(rows)
             setIsFavorited(!!rows.length); 
           }
         );
