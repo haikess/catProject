@@ -10,10 +10,10 @@ const renderScene = SceneMap({
 
 export default function App() { 
   const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
+  const routes = [
     { key: "first", title: "Random" },
     { key: "second", title: "Favorites" },
-  ]);
+  ];
 
   return ( 
     <TabView
